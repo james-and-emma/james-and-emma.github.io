@@ -38,6 +38,160 @@ Jekyll integration by Chris Bobbe | chrisbobbe.github.io
   <!-- Web fonts -->
   <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
 
+<script type='text/javascript'>
+  /* global google */
+/* global MarkerClusterer */
+// eslint-disable-next-line no-unused-vars
+var jekyllMaps = (function() {
+  'use strict'
+  var clusterSettings = {}
+  var clusterReady = false
+  var mapReady = false
+  var options = {}
+  var data = []
+  var maps = []
+
+  return {
+    initializeMap: initializeMap,
+    initializeCluster: initializeCluster,
+    register: register
+  }
+
+  /**
+   * Setup Google Maps options and call renderer.
+   */
+  function initializeMap() {
+    options = {
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      center: new google.maps.LatLng(0, 0)
+    }
+    mapReady = true
+    render()
+  }
+
+  /**
+   * Register map data to be rendered once Google Maps API is loaded.
+   *
+   * @param string id
+   * @param Array locations
+   * @param Object settings
+   */
+  function register(id, locations, options) {
+    data.push({ id: id, locations: locations, options: options })
+    render()
+  }
+
+  /**
+   * Render maps data if Google Maps API is loaded.
+   */
+  function render() {
+    if (!mapReady) return
+
+    while (data.length > 0) {
+      var item = data.pop()
+      var bounds = new google.maps.LatLngBounds()
+      var mapOptions = Object.assign({}, options, item.options)
+      var map = new google.maps.Map(
+        document.getElementById(item.id),
+        mapOptions
+      )
+      var infoWindow = new google.maps.InfoWindow()
+      var markers = item.locations.map(createMarker)
+
+      map.fitBounds(bounds)
+      google.maps.event.addListenerOnce(map, 'bounds_changed', function() {
+        if (this.customZoom) this.setZoom(this.customZoom)
+      })
+      if (mapOptions.useCluster) {
+        maps.push({ map: map, markers: markers })
+        processCluster()
+      }
+    }
+
+    function createMarker(location) {
+      var position = new google.maps.LatLng(
+        location.latitude,
+        location.longitude
+      )
+      bounds.extend(position)
+      if (!mapOptions.showMarker) return false
+
+      var marker = new google.maps.Marker({
+        position: position,
+        title: location.title,
+        image: location.image,
+        url: location.url.length > 0 ? mapOptions.baseUrl + location.url : '',
+        map: map
+      })
+      if (mapOptions.showMarkerPopup) marker.addListener('click', markerPopup)
+
+      return marker
+    }
+
+    function markerPopup() {
+      var contentHtml =
+        '<div class="map-info-window"><h5>' + this.title + '</h5>'
+      var imageHtml = '<img src="' + this.image + '" alt="' + this.title + '"/>'
+      if (this.url.length > 0) {
+        var linkText = this.image.length > 0 ? imageHtml : 'View'
+        contentHtml += '<a href="' + this.url + '">' + linkText + '</a></div>'
+      } else if (this.image.length > 0) {
+        contentHtml += imageHtml
+      }
+      infoWindow.setContent(contentHtml)
+      infoWindow.open(map, this)
+    }
+  }
+
+  function initializeCluster(settings) {
+    clusterReady = true
+    clusterSettings = settings || {}
+    processCluster()
+  }
+
+  function processCluster() {
+    if (!clusterReady) return
+
+    while (maps.length > 0) {
+      var obj = maps.pop()
+      // eslint-disable-next-line no-new
+      new MarkerClusterer(obj.map, obj.markers, {
+        gridSize: clusterSettings.grid_size || 25,
+        imagePath:
+          'https://cdn.rawgit.com/googlemaps/js-marker-clusterer/gh-pages/images/m'
+      })
+    }
+  }
+})()
+/* Object.assign polyfill */
+if (typeof Object.assign !== 'function') {
+  Object.assign = function(target) {
+    'use strict'
+    if (target == null) {
+      throw new TypeError('Cannot convert undefined or null to object')
+    }
+
+    target = Object(target)
+    for (var index = 1; index < arguments.length; index++) {
+      var source = arguments[index]
+      if (source != null) {
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key]
+          }
+        }
+      }
+    }
+    return target
+  }
+}
+
+</script>
+<script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDkNgm_smN3_BYbZHgIm2mSEin1VwrHwJk&callback=jekyllMaps.initializeMap'></script>
+
+<script async defer src='https://cdn.rawgit.com/googlemaps/js-marker-clusterer/gh-pages/src/markerclusterer.js'
+        onload='jekyllMaps.initializeCluster({})'></script>
+
 </head><body><!-- Header -->
 <div id="header">
   <div class="top"><!-- Logo -->
@@ -63,8 +217,6 @@ Jekyll integration by Chris Bobbe | chrisbobbe.github.io
             <span class="icon fa-camera">Photos</span>
           </a></li><li><a href="http://james-and-emma.github.io/contact.html" id="contact-us-link">
             <span class="icon fa-envelope">Contact us</span>
-          </a></li><li><a href="http://james-and-emma.github.io/accommodation2.html" id="accommodation-link">
-            <span class="icon fa-hotel">Accommodation</span>
           </a></li></ul>
 </nav></div>
   <div class="bottom"><!-- Social Icons -->
@@ -78,30 +230,39 @@ Jekyll integration by Chris Bobbe | chrisbobbe.github.io
 			<header>
 				<h2>Accommodation</h2></header><p>Here is a list of nearby hotels. We haven’t stayed at any of them ourselves, so we would advise looking at online reviews before booking.</p>
 
+<div id="beb067ba-247f-4e6a-9185-95dde08bc5d8" style="width:100%;height:400px;"></div>
+<script type="text/javascript">
+  jekyllMaps.register(
+    'beb067ba-247f-4e6a-9185-95dde08bc5d8',
+    [{"latitude":51.5391602,"longitude":-2.5261042,"title":"Mercure Bristol North the Grange Hotel","url":"https://www.booking.com/hotel/gb/bookingsramadagrangehotel.en-gb.html","image":""},{"latitude":51.5441673,"longitude":-2.5673157,"title":"Doubletree Hilton","url":"http://doubletree3.hilton.com/en/hotels/united-kingdom/doubletree-by-hilton-hotel-bristol-north-BSTBRDI/index.html","image":""},{"latitude":51.5050753,"longitude":-2.5388507,"title":"Holiday Inn Filton","url":"https://www.ihg.com/holidayinn/hotels/us/en/bristol/brsfr/hoteldetail?cm_mmc=YextLocal-_-GBR-_-BRSFR","image":""},{"latitude":51.5075726,"longitude":-2.5575739,"title":"Holiday Inn Express Bristol North","url":"https://www.booking.com/hotel/gb/expressbyholidayinnbristolnorth.en-gb.html","image":""},{"latitude":51.4983033,"longitude":-2.4822517,"title":"Premier Inn Emersons Green","url":"https://www.premierinn.com/gb/en/hotels/england/bristol/bristol/bristol-east-emersons-green.html","image":""},{"latitude":51.5085655,"longitude":-2.5774191,"title":"Premier Inn Filton","url":"https://www.premierinn.com/gb/en/hotels/england/bristol/bristol/bristol-filton.html","image":""},{"latitude":51.5923676,"longitude":-2.5304577,"title":"Premier Inn Alveston","url":"https://www.premierinn.com/gb/en/hotels/england/bristol/bristol/bristol-alveston.html","image":""},{"latitude":51.5261098,"longitude":-2.5745628,"title":"Travelodge Filton","url":"https://www.travelodge.co.uk/hotels/606/Bristol-Filton-hotel","image":""},{"latitude":51.5261587,"longitude":-2.6176028,"title":"Travelodge Cribbs Causeway","url":"https://www.travelodge.co.uk/hotels/79/Bristol-Cribbs-Causeway-hotel","image":""},{"latitude":51.604705,"longitude":-2.6236135,"title":"Travelodge Severn View","url":"https://www.travelodge.co.uk/hotels/97/Bristol-Severn-View-M48-hotel","image":""},{"latitude":51.5512832,"longitude":-2.5718748,"title":"Almondsbury Interchange Hotel","url":"https://www.almondsburyinterchangehotel.com/accommodation/","image":""},{"latitude":51.5132213,"longitude":-2.5139003,"title":"Old Star Inn","url":"http://www.theoldstarbristol.co.uk","image":""},{"latitude":51.5080213,"longitude":-2.5196307,"title":"Coach House B&B","url":"http://www.bristolcoachhouse.co.uk","image":""},{"latitude":51.5426985,"longitude":-2.5144532,"title":"Old Gloucester Road Farm B&B","url":"http://bedandbreakfast-online.co.uk/","image":""},{"latitude":51.5428128,"longitude":-2.562119,"title":"Orchard Gate apartment","url":"https://www.booking.com/hotel/gb/alderman-apartments-orchard-gate.en-gb.html","image":""},{"latitude":51.537987,"longitude":-2.5692401,"title":"Willow Court Lodge","url":"https://www.booking.com/hotel/gb/willow-court-lodge.en-gb.html","image":""},{"latitude":51.5252308,"longitude":-2.5445839,"title":"Bradley Stoke Apartment","url":"https://www.booking.com/hotel/gb/arden-close-apartment.en-gb.html","image":""},{"latitude":51.5229551,"longitude":-2.5343535,"title":"The Worthys (apartment)","url":"http://hotels.bedandbreakfasts.co.uk/hotel/gb/the-worthys.en-gb.html","image":""},{"latitude":51.5457375,"longitude":-2.4445709,"title":"Bramley House B&B","url":"http://www.uk-bedandbreakfasts.com/view/Iron-Acton/1726/30","image":""},{"latitude":51.5500033,"longitude":-2.4855187,"title":"Commonwealth Cottage","url":"https://www.booking.com/hotel/gb/commonwealth-cottage.en-gb.html","image":""},{"latitude":51.520844,"longitude":-2.4747576,"title":"Magnolia B&B","url":"https://www.laterooms.com/en/hotel-reservations/506301_magnolia-b-and-b-coalpit-heath.aspx","image":""},{"latitude":51.5151553,"longitude":-2.4596927,"title":"Box Hedge Farm","url":"http://www.cylex-uk.co.uk/reviews/viewcompanywebsite.aspx?firmaName=box+hedge+farm+b+%26+b&companyId=15707395","image":""},{"latitude":51.493952,"longitude":-2.4832651,"title":"Langley Arms B&B","url":"https://www.booking.com/hotel/gb/the-langely-arms-bed-and-breakfast.en-gb.html","image":""}],
+    {"baseUrl":"","useCluster":true,"showMarker":true,"showMarkerPopup":true}
+  );
+</script>
+
 <ul>
-  <li><a href="https://www.booking.com/hotel/gb/bookingsramadagrangehotel.en-gb.html">Mercure Bristol North, Grange Hotel, Old Gloucester Road, Winterbourne BS36 1RP</a></li>
-  <li><a href="http://doubletree3.hilton.com/en/hotels/united-kingdom/doubletree-by-hilton-hotel-bristol-north-BSTBRDI/index.html">Doubletree Hilton, Woodlands Lane, Bradley Stoke, Bristol BS32 4JF</a></li>
-  <li><a href="https://www.ihg.com/holidayinn/hotels/us/en/bristol/brsfr/hoteldetail?cm_mmc=YextLocal-_-GBR-_-BRSFR">Holiday Inn Filton, Hambrook BS16 1QX</a></li>
-  <li><a href="https://www.booking.com/hotel/gb/expressbyholidayinnbristolnorth.en-gb.html">Holiday Inn Express Bristol North, Parkway BS34 8TJ</a></li>
-  <li><a href="https://www.premierinn.com/gb/en/hotels/england/bristol/bristol/bristol-east-emersons-green.html">Premier Inn Emersons Green BS16 7AN</a></li>
-  <li><a href="https://www.premierinn.com/gb/en/hotels/england/bristol/bristol/bristol-filton.html">Premier Inn Filton, Gloucester Road BS34 7BR</a></li>
-  <li><a href="https://www.premierinn.com/gb/en/hotels/england/bristol/bristol/bristol-alveston.html">Premier Inn Alveston, The Ship, BS35 3LL</a></li>
-  <li><a href="https://www.travelodge.co.uk/hotels/606/Bristol-Filton-hotel">Travelodge Filton, BS34 5GN</a></li>
-  <li><a href="https://www.travelodge.co.uk/hotels/79/Bristol-Cribbs-Causeway-hotel">Travelodge Cribbs Causeway BS10 7TL</a></li>
-  <li><a href="https://www.travelodge.co.uk/hotels/97/Bristol-Severn-View-M48-hotel">Travelodge Severn View BS35 4BH</a></li>
-  <li><a href="https://www.almondsburyinterchangehotel.com/accommodation/">Almondsbury Interchange Hotel, Gloucester Road, Almondsbury BS32 4AA</a></li>
-  <li><a href="http://www.theoldstarbristol.co.uk">Old Star Inn, Hambrook BS16 1SE</a></li>
-  <li><a href="http://www.bristolcoachhouse.co.uk">Coach House B&amp;B, Hambrook BS16 1RY</a></li>
-  <li><a href="http://bedandbreakfast-online.co.uk/">Old Gloucester Road Farm B&amp;B, Old Gloucester Road, Winterbourne BS36 1RT</a></li>
-  <li><a href="https://www.booking.com/hotel/gb/alderman-apartments-orchard-gate.en-gb.html">Orchard Gate apartment, Bradley Stoke, Bristol BS32 0HN</a></li>
-  <li><a href="https://www.booking.com/hotel/gb/willow-court-lodge.en-gb.html">Willow Court Lodge, Patchway, Bristol BS34 6ND</a></li>
-  <li><a href="https://www.booking.com/hotel/gb/arden-close-apartment.en-gb.html">Arden Close apartment, Bradley Stoke, Bristol BS32 8AX</a></li>
-  <li><a href="http://hotels.bedandbreakfasts.co.uk/hotel/gb/the-worthys.en-gb.html">The Worthys (apartment), Bradley Stoke, Bristol BS32 8DQ</a></li>
-  <li><a href="http://www.uk-bedandbreakfasts.com/view/Iron-Acton/1726/30">Bramley House B&amp;B, Yate Road, Iron Acton BS37 9XX</a></li>
-  <li><a href="https://www.booking.com/hotel/gb/commonwealth-cottage.en-gb.html">Commonwealth Cottage, Iron Acton BS37 9</a></li>
-  <li><a href="https://www.laterooms.com/en/hotel-reservations/506301_magnolia-b-and-b-coalpit-heath.aspx">Magnolia B&amp;B, 1 Rathbone Close, Coalpit Heath BS36 2TW</a></li>
-  <li><a href="http://www.cylex-uk.co.uk/reviews/viewcompanywebsite.aspx?firmaName=box+hedge+farm+b+%26+b&amp;companyId=15707395">Box Hedge Farm, Coalpit Heath BS36 2UW</a></li>
-  <li><a href="https://www.booking.com/hotel/gb/the-langely-arms-bed-and-breakfast.en-gb.html">Langley Arms B&amp;B, Emersons Green BS16 7GA</a></li>
+  <li><a href="https://www.booking.com/hotel/gb/bookingsramadagrangehotel.en-gb.html">Mercure Bristol North the Grange Hotel</a>, Old Gloucester Road, Winterbourne BS36 1RP</li>
+  <li><a href="http://doubletree3.hilton.com/en/hotels/united-kingdom/doubletree-by-hilton-hotel-bristol-north-BSTBRDI/index.html">Doubletree Hilton</a>, Woodlands Lane, Bradley Stoke, Bristol BS32 4JF</li>
+  <li><a href="https://www.ihg.com/holidayinn/hotels/us/en/bristol/brsfr/hoteldetail?cm_mmc=YextLocal-_-GBR-_-BRSFR">Holiday Inn Filton</a>, Hambrook BS16 1QX</li>
+  <li><a href="https://www.booking.com/hotel/gb/expressbyholidayinnbristolnorth.en-gb.html">Holiday Inn Express Bristol North</a>, Parkway BS34 8TJ</li>
+  <li><a href="https://www.premierinn.com/gb/en/hotels/england/bristol/bristol/bristol-east-emersons-green.html">Premier Inn Emersons Green</a>, BS16 7AN</li>
+  <li><a href="https://www.premierinn.com/gb/en/hotels/england/bristol/bristol/bristol-filton.html">Premier Inn Filton</a>, Gloucester Road BS34 7BR</li>
+  <li><a href="https://www.premierinn.com/gb/en/hotels/england/bristol/bristol/bristol-alveston.html">Premier Inn Alveston</a>, The Ship Inn, BS35 3LL</li>
+  <li><a href="https://www.travelodge.co.uk/hotels/606/Bristol-Filton-hotel">Travelodge Filton</a>, BS34 5GN</li>
+  <li><a href="https://www.travelodge.co.uk/hotels/79/Bristol-Cribbs-Causeway-hotel">Travelodge Cribbs Causeway</a>, BS10 7TL</li>
+  <li><a href="https://www.travelodge.co.uk/hotels/97/Bristol-Severn-View-M48-hotel">Travelodge Severn View</a>, BS35 4BH</li>
+  <li><a href="https://www.almondsburyinterchangehotel.com/accommodation/">Almondsbury Interchange Hotel</a>, Gloucester Road, Almondsbury BS32 4AA</li>
+  <li><a href="http://www.theoldstarbristol.co.uk">Old Star Inn</a>, Hambrook BS16 1SE</li>
+  <li><a href="http://www.bristolcoachhouse.co.uk">Coach House B&amp;B</a>, Hambrook BS16 1RY</li>
+  <li><a href="http://bedandbreakfast-online.co.uk/">Old Gloucester Road Farm B&amp;B</a>, Old Gloucester Road, Winterbourne BS36 1RT</li>
+  <li><a href="https://www.booking.com/hotel/gb/alderman-apartments-orchard-gate.en-gb.html">Orchard Gate apartment</a>, Bradley Stoke, Bristol BS32 0HN</li>
+  <li><a href="https://www.booking.com/hotel/gb/willow-court-lodge.en-gb.html">Willow Court Lodge</a>, Patchway, Bristol BS34 6ND</li>
+  <li><a href="https://www.booking.com/hotel/gb/arden-close-apartment.en-gb.html">Bradley Stoke Apartment</a>, Arden Close, Bradley Stoke, Bristol BS32 8AX</li>
+  <li><a href="http://hotels.bedandbreakfasts.co.uk/hotel/gb/the-worthys.en-gb.html">The Worthys (apartment)</a>, Bradley Stoke, Bristol BS32 8DQ</li>
+  <li><a href="http://www.uk-bedandbreakfasts.com/view/Iron-Acton/1726/30">Bramley House B&amp;B</a>, Yate Road, Iron Acton BS37 9XX</li>
+  <li><a href="https://www.booking.com/hotel/gb/commonwealth-cottage.en-gb.html">Commonwealth Cottage</a>, Iron Acton BS37 9</li>
+  <li><a href="https://www.laterooms.com/en/hotel-reservations/506301_magnolia-b-and-b-coalpit-heath.aspx">Magnolia B&amp;B</a>, 1 Rathbone Close, Coalpit Heath BS36 2TW</li>
+  <li><a href="http://www.cylex-uk.co.uk/reviews/viewcompanywebsite.aspx?firmaName=box+hedge+farm+b+%26+b&amp;companyId=15707395">Box Hedge Farm</a>, Coalpit Heath BS36 2UW</li>
+  <li><a href="https://www.booking.com/hotel/gb/the-langely-arms-bed-and-breakfast.en-gb.html">Langley Arms B&amp;B</a>, Emersons Green BS16 7GA</li>
   <li>Plus pubs, B&amp;Bs, and Airbnb options in Yate, Chipping Sodbury, Bradley Stoke, Stoke Gifford, Harry Stoke, Little Stoke, Almondsbury, Filton, Patchway.</li>
 </ul>
 </div>
