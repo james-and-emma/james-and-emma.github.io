@@ -391,10 +391,10 @@ body { -webkit-text-size-adjust: none; }
   .\-2u\28mobile\29 { margin-left: 16.6666666667%; }
   .\-1u\28mobile\29 { margin-left: 8.3333333333%; } }
 /* Basic */
-body { background: #f00404; font-family: 'Source Sans Pro', sans-serif; font-size: 19pt; font-weight: 300; line-height: 1.75em; color: #888; }
+body { background: #fff; font-family: 'Source Sans Pro', sans-serif; font-size: 19pt; font-weight: 300; line-height: 1.75em; color: #888; }
 body.is-loading * { -moz-transition: none !important; -webkit-transition: none !important; -ms-transition: none !important; transition: none !important; -moz-animation: none !important; -webkit-animation: none !important; -ms-animation: none !important; animation: none !important; }
 
-input, textarea, select { font-family: 'Source Sans Pro', sans-serif; font-size: 19pt; font-weight: 300; line-height: 1.75em; color: #888; }
+input, textarea, select { font-family: 'Source Sans Pro', sans-serif; font-size: 19pt; font-weight: 300; line-height: 1.75em; color: #f00; }
 
 h1, h2, h3, h4, h5, h6 { font-weight: 300; color: #666; line-height: 1.5em; }
 
