@@ -520,8 +520,8 @@ input[type="button"]:active, input[type="submit"]:active, input[type="reset"]:ac
 #nav ul hr { margin: auto 1.5em; }
 #nav ul li a { display: block; padding: 0.5em 1.5em 0.5em 1.5em; color: rgba(255, 255, 255, 0.5); text-decoration: none; outline: 0; border: 0; -moz-transition: none; -webkit-transition: none; -ms-transition: none; transition: none; }
 #nav ul li a span { position: relative; display: block; font-size: 0.8em; }
-#nav ul li a span:before { position: absolute; left: 0; color: #235733; text-align: center; width: 1.25em; line-height: 1.75em; }
-#nav ul li a.active { background: rgba(0, 0, 0, 0.15); box-shadow: inset 0 0 0.25em 0 rgba(0, 0, 0, 0.125); color: #81ffa7; }
+#nav ul li a span:before { position: absolute; left: 0; color: #41484c; text-align: center; width: 1.25em; line-height: 1.75em; }
+#nav ul li a.active { background: rgba(0, 0, 0, 0.15); box-shadow: inset 0 0 0.25em 0 rgba(0, 0, 0, 0.125); color: #fff; }
 #nav ul li a.active span:before { color: #907cff; }
 
 /* Footer */
