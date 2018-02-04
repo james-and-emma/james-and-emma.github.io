@@ -502,7 +502,7 @@ input[type="button"]:active, input[type="submit"]:active, input[type="reset"]:ac
 .icon > .label { display: none; }
 
 /* Header */
-#header { display: -moz-flex; display: -webkit-flex; display: -ms-flex; display: flex; -moz-flex-direction: column; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; -moz-justify-content: space-between; -webkit-justify-content: space-between; -ms-justify-content: space-between; justify-content: space-between; background: #222629 url("images/overlay.png"); box-shadow: inset -0.25em 0 0.25em 0 rgba(0, 0, 0, 0.1); color: #fff; height: 100%; left: 0; overflow-y: auto; position: fixed; text-align: right; top: 0; width: 375px; }
+#header { display: -moz-flex; display: -webkit-flex; display: -ms-flex; display: flex; -moz-flex-direction: column; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; -moz-justify-content: space-between; -webkit-justify-content: space-between; -ms-justify-content: space-between; justify-content: space-between; background: #d20000 url("images/overlay.png"); box-shadow: inset -0.25em 0 0.25em 0 rgba(0, 0, 0, 0.1); color: #fff; height: 100%; left: 0; overflow-y: auto; position: fixed; text-align: right; top: 0; width: 375px; }
 #header .top { -moz-flex-grow: 1; -webkit-flex-grow: 1; -ms-flex-grow: 1; flex-grow: 1; }
 #header .bottom { -moz-flex-shrink: 0; -webkit-flex-shrink: 0; -ms-flex-shrink: 0; flex-shrink: 0; padding: 1.5em 0 0.75em 0; }
 #header .bottom > :last-child { margin-bottom: 0; }
