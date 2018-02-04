@@ -414,7 +414,7 @@ strong, b { font-weight: 300; color: #666; }
 
 em, i { font-style: italic; }
 
-a { text-decoration: none; color: #666; border-bottom: dotted 1px rgba(102, 102, 102, 0.75); -moz-transition: color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out; -webkit-transition: color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out; -ms-transition: color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out; transition: color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out; outline: 0; }
+a { text-decoration: none; color: #666; border-bottom: dotted 1px #666; -moz-transition: color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out; -webkit-transition: color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out; -ms-transition: color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out; transition: color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out; outline: 0; }
 a:hover { color: #a37cff; border-bottom-color: rgba(255, 255, 255, 0); }
 
 sub { position: relative; top: 0.5em; font-size: 0.8em; }
