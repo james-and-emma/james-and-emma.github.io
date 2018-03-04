@@ -99,7 +99,7 @@ var jekyllMaps = (function() {
       var markers = item.locations.map(createMarker)
 
       map.fitBounds(bounds)
-      google.maps.event.addListenerOnce(map, 'bounds_changed', function() {
+      google.maps.event.addListenerOnce(map, 'idle', function() {
         if (this.customZoom) this.setZoom(this.customZoom)
       })
       if (mapOptions.useCluster) {
@@ -203,7 +203,9 @@ if (typeof Object.assign !== 'function') {
   </a>
 </div><!-- Nav -->
 <nav id="nav">
-  <ul><li><a href="http://james-and-emma.github.io/" id="home-link">
+  <ul><li><a href="http://james-and-emma.github.io/assets/instafeed/" id="instafeed-js-link">
+            <span class="icon fa-link">instafeed.js</span>
+          </a></li><li><a href="http://james-and-emma.github.io/" id="home-link">
             <span class="icon fa-home">Home</span>
           </a></li><li><a href="#" id="location" class="active">
             <span class="icon fa-map-marker">Location</span>
@@ -249,10 +251,10 @@ if (typeof Object.assign !== 'function') {
 
 <h2 id="how-to-get-here">How to get here</h2>
 
-<div id="049f3152-54c7-47de-a3ee-6f8f5ba45a1e" style="width:100%;height:400px;"></div>
+<div id="46212997-c752-4526-9229-b12fdcfc2867" style="width:100%;height:400px;"></div>
 <script type="text/javascript">
   jekyllMaps.register(
-    '049f3152-54c7-47de-a3ee-6f8f5ba45a1e',
+    '46212997-c752-4526-9229-b12fdcfc2867',
     [{"latitude":51.529564,"longitude":-2.474435,"title":"Zion United Church","url":"/location.html","image":"img/church.svg"},{"latitude":51.5260867,"longitude":-2.5189702,"title":"Winterbourne Medieval Barn","url":"/location.html","image":""},{"latitude":51.5309542,"longitude":-2.4753621,"title":"Car Park - Royal British Legion","url":"/location.html","image":""}],
     {"baseUrl":"","useCluster":true,"showMarker":true,"showMarkerPopup":true}
   );

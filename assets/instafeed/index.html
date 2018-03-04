@@ -1,0 +1,423 @@
+<!DOCTYPE HTML>
+<!--
+Prologue by HTML5 UP
+html5up.net | @ajlkn
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+Jekyll integration by Chris Bobbe | chrisbobbe.github.io
+-->
+<html><head><!-- Robots -->
+  <meta name="robots" content="index, follow" /><link rel="canonical" href="http://james-and-emma.github.io/assets/instafeed/" /><!-- Title, description, author --><title>instafeed.js | James and Emma&#39;s Wedding - Saturday 30th June 2018</title>
+  <meta name="description" content="Welcome to the website for James and Emma&#39;s wedding on Saturday 30th June 2018." />
+  <meta name="author" content="James Harrison and Emma Chambers" />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="instafeed.js | James and Emma&#39;s Wedding - Saturday 30th June 2018" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://james-and-emma.github.io/img/avatar-large.jpg" />
+  <meta property="og:url" content="http://james-and-emma.github.io/assets/instafeed/" />
+  <meta property="og:site_name" content="James and Emma&#39;s Wedding" />
+  <meta property="og:description" content="Welcome to the website for James and Emma&#39;s wedding on Saturday 30th June 2018." />
+  
+  <!-- Styles -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js" defer></script><![endif]-->
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" defer></script>
+  <script src="/assets/js/jquery.scrolly.min.js" defer></script>
+  <script src="/assets/js/jquery.scrollzer.min.js" defer></script>
+  <script src="/assets/js/skel.min.js" defer></script>
+  <script src="/assets/js/util.js" defer></script>
+  <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js" defer></script><![endif]-->
+  <script src="/assets/js/main.js" defer></script>
+
+  <!-- Web fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+
+</head><body><!-- Header -->
+<div id="header">
+  <div class="top"><!-- Logo -->
+<div id="logo">
+  <a href="http://james-and-emma.github.io/" id="home-link">
+    <span class="image avatar48"><img src="/img/avatar-large.jpg" alt="Avatar of James Harrison and Emma Chambers" /></span>
+    <h1 id="title">James and Emma's Wedding</h1>
+    <p>Saturday 30th June 2018</p>
+  </a>
+</div><!-- Nav -->
+<nav id="nav">
+  <ul><li><a href="#" id="instafeed-js" class="active">
+            <span class="icon fa-link">instafeed.js</span>
+          </a></li><li><a href="http://james-and-emma.github.io/" id="home-link">
+            <span class="icon fa-home">Home</span>
+          </a></li><li><a href="http://james-and-emma.github.io/location.html" id="location-link">
+            <span class="icon fa-map-marker">Location</span>
+          </a></li><li><a href="http://james-and-emma.github.io/accommodation.html" id="accommodation-link">
+            <span class="icon fa-hotel">Accommodation</span>
+          </a></li><li><a href="http://james-and-emma.github.io/rsvp.html" id="rsvp-link">
+            <span class="icon fa-send">RSVP</span>
+          </a></li><li><a href="http://james-and-emma.github.io/gifts.html" id="gifts-link">
+            <span class="icon fa-gift">Gifts</span>
+          </a></li><li><a href="http://james-and-emma.github.io/photos.html" id="photos-link">
+            <span class="icon fa-camera">Photos</span>
+          </a></li><li><a href="http://james-and-emma.github.io/contact.html" id="contact-us-link">
+            <span class="icon fa-envelope">Contact us</span>
+          </a></li></ul>
+</nav></div>
+  <div class="bottom"><!-- Social Icons -->
+<ul class="icons"></ul>
+</div>
+</div>
+<!-- Main -->
+<div id="main">
+	<!-- Page -->
+	<article class="shade-two">
+	  <div class="container">
+			<header>
+				<h2>instafeed.js</h2></header><h1 id="instafeedjs">instafeed.js</h1>
+<p><a href="https://travis-ci.org/stevenschobert/instafeed.js"><img src="https://travis-ci.org/stevenschobert/instafeed.js.svg?branch=master" alt="Build Status" /></a> <a href="https://www.jsdelivr.com/package/npm/instafeed.js"><img src="https://data.jsdelivr.com/v1/package/npm/instafeed.js/badge?style=rounded" alt="jsDelivr Hits" /></a></p>
+
+<p>Instafeed is a dead-simple way to add Instagram photos to your website. No jQuery required, just good ‘ol plain javascript.</p>
+
+<p><strong>Examples:</strong></p>
+
+<ul>
+  <li><a href="http://hemeon.com/">Hemeon.com</a> by <a href="https://twitter.com/hemeon">Marc Hemeon</a></li>
+  <li><a href="http://vinthomas.com/">VinThomas.com</a> by <a href="https://twitter.com/vinthomas">Vin Thomas</a></li>
+</ul>
+
+<p><strong>Buy me a coffee:</strong></p>
+
+<p>If you enjoy using Instafeed.js and want to say thanks, you can leave me a small tip. All payments
+are securely handled through <a href="http://stripe.com">Stripe</a>.</p>
+
+<p><strong><a href="https://plasso.co/spschobert@gmail.com">Leave me a tip →</a></strong></p>
+
+<h2 id="installation">Installation</h2>
+<p>Setting up Instafeed is pretty straight-forward. Just download the script and include it in your HTML:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"path/to/instafeed.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>Instafeed.js also supports AMD/CommonJS</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// AMD</span>
+<span class="nx">require</span><span class="p">([</span><span class="s2">"path/to/instafeed"</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Instafeed</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">});</span>
+
+<span class="c1">// CommonJS</span>
+<span class="kd">var</span> <span class="nx">Instafeed</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"instafeed"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="npmbower">NPM/Bower</h3>
+
+<p>Instafeed.js is also available on NPM and Bower:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install instafeed.js      <span class="c"># npm</span>
+bower install instafeed.js    <span class="c"># bower</span>
+</code></pre></div></div>
+
+<h2 id="basic-usage">Basic Usage</h2>
+
+<p>Here’s how easy it is to get all images tagged with <strong>#awesome</strong>:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+    <span class="kd">var</span> <span class="nx">feed</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Instafeed</span><span class="p">({</span>
+        <span class="na">get</span><span class="p">:</span> <span class="s1">'tagged'</span><span class="p">,</span>
+        <span class="na">tagName</span><span class="p">:</span> <span class="s1">'awesome'</span><span class="p">,</span>
+        <span class="na">clientId</span><span class="p">:</span> <span class="s1">'YOUR_CLIENT_ID'</span>
+    <span class="p">});</span>
+    <span class="nx">feed</span><span class="p">.</span><span class="nx">run</span><span class="p">();</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>Instafeed with automatically look for a <code class="highlighter-rouge">&lt;div id="instafeed"&gt;&lt;/div&gt;</code> and fill it with linked thumbnails. Of course, you can easily change this behavior using <a href="#standard-options">standard options</a>. Also check out the <a href="#advanced-options">advanced options</a> for some advanced ways of customizing <strong>Instafeed.js</strong>.</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>The only thing you’ll need to get going is a valid <strong>client id</strong> from Instagram’s API. You can easily register for one on <a href="http://instagram.com/developer/register/">Instagram’s website</a>.</p>
+
+<p>If you need help with that step, just try Googling <a href="https://google.com/search?q=How%20to%20get%20an%20instagram%20client%20id">“How to get an Instagram client ID”</a>.</p>
+
+<h2 id="standard-options">Standard Options</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">clientId</code> - <strong>Required</strong>. Your API client id from Instagram.</li>
+  <li><code class="highlighter-rouge">accessToken</code> - A valid oAuth token. Can be used in place of <code class="highlighter-rouge">clientId</code>.</li>
+  <li><code class="highlighter-rouge">target</code> - Either the ID name or the DOM element itself where you want to add the images to.</li>
+  <li><code class="highlighter-rouge">template</code> - Custom HTML template to use for images. See <a href="#templating">templating</a>.</li>
+  <li><code class="highlighter-rouge">get</code> - Customize what Instafeed fetches. Available options are:
+    <ul>
+      <li><code class="highlighter-rouge">popular</code> (default) - Images from the popular page</li>
+      <li><code class="highlighter-rouge">tagged</code> - Images with a specific tag. Use <code class="highlighter-rouge">tagName</code> to specify the tag.</li>
+      <li><code class="highlighter-rouge">location</code> - Images from a location. Use <code class="highlighter-rouge">locationId</code> to specify the location</li>
+      <li><code class="highlighter-rouge">user</code> - Images from a user. Use <code class="highlighter-rouge">userId</code> to specify the user.</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">tagName</code> (string) - Name of the tag to get. Use with <code class="highlighter-rouge">get: 'tagged'</code>.</li>
+  <li><code class="highlighter-rouge">locationId</code> (number) - Unique id of a location to get. Use with <code class="highlighter-rouge">get: 'location'</code>.</li>
+  <li><code class="highlighter-rouge">userId</code> (number) - Unique id of a user to get. Use with <code class="highlighter-rouge">get: 'user'</code>.</li>
+  <li><code class="highlighter-rouge">sortBy</code> (string) - Sort the images in a set order. Available options are:
+    <ul>
+      <li><code class="highlighter-rouge">none</code> (default) - As they come from Instagram.</li>
+      <li><code class="highlighter-rouge">most-recent</code> - Newest to oldest.</li>
+      <li><code class="highlighter-rouge">least-recent</code> - Oldest to newest.</li>
+      <li><code class="highlighter-rouge">most-liked</code> - Highest # of likes to lowest.</li>
+      <li><code class="highlighter-rouge">least-liked</code> - Lowest # likes to highest.</li>
+      <li><code class="highlighter-rouge">most-commented</code> - Highest # of comments to lowest.</li>
+      <li><code class="highlighter-rouge">least-commented</code> - Lowest # of comments to highest.</li>
+      <li><code class="highlighter-rouge">random</code> - Random order.</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">links</code> - Wrap the images with a link to the photo on Instagram.</li>
+  <li><code class="highlighter-rouge">limit</code> - Maximum number of Images to add. <strong>Max of 60</strong>.</li>
+  <li><code class="highlighter-rouge">useHttp</code> - By default, image urls are protocol-relative. Set to <code class="highlighter-rouge">true</code>
+to use the standard <code class="highlighter-rouge">http://</code>.</li>
+  <li><code class="highlighter-rouge">resolution</code> - Size of the images to get. Available options are:
+    <ul>
+      <li><code class="highlighter-rouge">thumbnail</code> (default) - 150x150</li>
+      <li><code class="highlighter-rouge">low_resolution</code> - 306x306</li>
+      <li><code class="highlighter-rouge">standard_resolution</code> - 612x612</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="advanced-options">Advanced Options</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">before</code> (function) - A callback function called before fetching images from Instagram.</li>
+  <li><code class="highlighter-rouge">after</code> (function) - A callback function called when images have been added to the page.</li>
+  <li><code class="highlighter-rouge">success</code> (function) - A callback function called when Instagram returns valid data. (argument -&gt; json object)</li>
+  <li><code class="highlighter-rouge">error</code> (function) - A callback function called when there is an error fetching images. (argument -&gt; string message)</li>
+  <li><code class="highlighter-rouge">mock</code> (bool) - Set to true fetch data without inserting images into DOM. Use with <strong>success</strong> callback.</li>
+  <li><code class="highlighter-rouge">filter</code> (function) - A function used to exclude images from your results. The function will be
+given the image data as an argument, and expects the function to return a boolean. See the example
+below for more information.</li>
+</ul>
+
+<p><strong>Example Filter (get username + tagged):</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">feed</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Instafeed</span><span class="p">({</span>
+  <span class="na">get</span><span class="p">:</span> <span class="s1">'user'</span><span class="p">,</span>
+  <span class="na">userId</span><span class="p">:</span> <span class="s1">'USER_ID'</span><span class="p">,</span>
+  <span class="na">filter</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">image</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">image</span><span class="p">.</span><span class="nx">tags</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">'TAG_NAME'</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+<span class="nx">feed</span><span class="p">.</span><span class="nx">run</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>To see a full list of properties that <code class="highlighter-rouge">image</code> has, see <a href="https://github.com/stevenschobert/instafeed.js/issues/21">issue #21</a>.</p>
+
+<h2 id="templating">Templating</h2>
+
+<p>The easiest way to control the way Instafeed.js looks on your website is to use the <strong>template</strong> option. You can write your own HTML markup and it will be used for every image that Instafeed.js fetches.</p>
+
+<p>Here’s a quick example:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+    <span class="kd">var</span> <span class="nx">feed</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Instafeed</span><span class="p">({</span>
+        <span class="na">get</span><span class="p">:</span> <span class="s1">'popular'</span><span class="p">,</span>
+        <span class="na">tagName</span><span class="p">:</span> <span class="s1">'awesome'</span><span class="p">,</span>
+        <span class="na">clientId</span><span class="p">:</span> <span class="s1">'YOUR_CLIENT_ID'</span><span class="p">,</span>
+        <span class="na">template</span><span class="p">:</span> <span class="s1">'&lt;a class="animation" href=""&gt;&lt;img src="" /&gt;&lt;/a&gt;'</span>
+    <span class="p">});</span>
+    <span class="nx">feed</span><span class="p">.</span><span class="nx">run</span><span class="p">();</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>Notice the <code class="highlighter-rouge">and</code>? The templating option provides several tags for you to use to control where variables are inserted into your HTML markup. Available keywors are:</p>
+
+<ul>
+  <li>`` - the image’s type. Can be <code class="highlighter-rouge">image</code> or <code class="highlighter-rouge">video</code>.</li>
+  <li>`` - contains the image’s width, in pixels.</li>
+  <li>`` - contains the image’s height, in pixels.</li>
+  <li>`` - contains the image’s orientation. Can be <code class="highlighter-rouge">square</code>, <code class="highlighter-rouge">portrait</code>, or <code class="highlighter-rouge">landscape</code>.</li>
+  <li>`` - URL to view the image on Instagram’s website.</li>
+  <li>`` - URL of the image source. The size is inherited from the <code class="highlighter-rouge">resolution</code> option.</li>
+  <li>`` - Unique ID of the image. Useful if you want to use <a href="http://instagram.com/developer/iphone-hooks/">iPhone hooks</a> to open the images directly in the Instagram app.</li>
+  <li>`` - Image’s caption text. Defaults to empty string if there isn’t one.</li>
+  <li>`` - Number of likes the image has.</li>
+  <li>`` - Number of comments the image has.</li>
+  <li>`` - Name of the location associated with the image. Defaults to empty string if there isn’t one.</li>
+  <li><code class="highlighter-rouge">- Full JSON object of the image. If you want to get a property of the image that isn't listed above you access it using dot-notation. (ex:</code> would get the filter used.)</li>
+</ul>
+
+<h2 id="portrait-and-landscape-photos">Portrait and Landscape Photos</h2>
+
+<p>Until <strong>June 1, 2016</strong>, Instagram’s API will return square images (with white borders),
+regardless of how they were originally uploaded.</p>
+
+<p>If you’d like to get images in their original landscape and portrait forms, you can opt-in
+to the API change by editing your Instagram API client, and clicking on the “Migrations” tab:</p>
+
+<p><img width="757" alt="screen shot 2015-10-31 at 2 02 56 pm" src="https://cloud.githubusercontent.com/assets/896486/10865600/560ad6a6-7fde-11e5-8e14-2013e51eda7c.png" /></p>
+
+<blockquote>
+  <p>Note: If you have the <code class="highlighter-rouge">resolution</code> option set to <code class="highlighter-rouge">thumbnail</code> (default), all images will
+be square regardless of your API settings.</p>
+</blockquote>
+
+<h4 id="image-size-template-helpers">Image Size Template Helpers</h4>
+
+<p>As of <strong>v1.4.0</strong>, Instafeed.js includes several helpers you can use in your <code class="highlighter-rouge">template</code> option
+to work with the new image sizes. These helpers are meant primarily to help control styling
+of the images through CSS.</p>
+
+<ul>
+  <li>`` - contains the image’s width, in pixels</li>
+  <li>`` - contains the image’s height, in pixels</li>
+  <li>`` - contains the image’s orientation. Can be <code class="highlighter-rouge">square</code>, <code class="highlighter-rouge">portrait</code>, or <code class="highlighter-rouge">landscape</code>.</li>
+</ul>
+
+<h2 id="getting-images-from-your-user-account">Getting images from your user account</h2>
+
+<p>To fetch images specifically from your account, set the <code class="highlighter-rouge">get</code> and <code class="highlighter-rouge">userId</code> options:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">userFeed</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Instafeed</span><span class="p">({</span>
+  <span class="na">get</span><span class="p">:</span> <span class="s1">'user'</span><span class="p">,</span>
+  <span class="na">userId</span><span class="p">:</span> <span class="s1">'YOUR_USER_ID'</span><span class="p">,</span>
+  <span class="na">accessToken</span><span class="p">:</span> <span class="s1">'YOUR_ACCESS_TOKEN'</span>
+<span class="p">});</span>
+<span class="nx">userFeed</span><span class="p">.</span><span class="nx">run</span><span class="p">();</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Note: <code class="highlighter-rouge">YOUR_USER_ID</code> option corresponds to your Instagram <strong>account ID (eg: 4385108)</strong>, not your username. If you do not know your
+account ID, do a quick google search for <a href="https://google.com/search?q=What%20is%20my%20Instagram%20account%20ID%3F">“What is my Instagram account ID?”</a>.
+There a several free tools available online that will look it up for you.</p>
+</blockquote>
+
+<h2 id="pagination">Pagination</h2>
+
+<p>As of <strong>v1.3</strong>, Instafeed.js has a <code class="highlighter-rouge">.next()</code> method you can call to load more images from Instagram.
+Under the hood, this uses the <em>pagination</em> data from the API. Additionally, there is a helper
+<code class="highlighter-rouge">.hasNext()</code> method that you can use to check if pagination data is available.</p>
+
+<p>Together these options can be used to create a “Load More” button:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// grab out load more button</span>
+<span class="kd">var</span> <span class="nx">loadButton</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'load-more'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">feed</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Instafeed</span><span class="p">({</span>
+  <span class="c1">// every time we load more, run this function</span>
+  <span class="na">after</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// disable button if no more results to load</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">hasNext</span><span class="p">())</span> <span class="p">{</span>
+      <span class="nx">loadButton</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">'disabled'</span><span class="p">,</span> <span class="s1">'disabled'</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+<span class="p">});</span>
+
+<span class="c1">// bind the load more button</span>
+<span class="nx">loadButton</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">feed</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="c1">// run our feed!</span>
+<span class="nx">feed</span><span class="p">.</span><span class="nx">run</span><span class="p">();</span>
+</code></pre></div></div>
+<h2 id="contributing-to-development">Contributing to Development</h2>
+
+<p>This isn’t a large project by any means, but I’m definitely welcome to any pull requests and contributions. Everything is written and tested in <a href="http://coffeescript.org">CoffeeScript</a>.</p>
+
+<p>You can get your copy up and running for development quickly by cloning the repo and running <a href="http://npmjs.org/">npm</a>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ npm install
+</code></pre></div></div>
+
+<p>This will install all the necessary test tools for testing. There is also a Makefile in the repo to make your tests quick and easy:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">make test</code> will run all the tests using <a href="https://github.com/mochajs/mocha">Mocha</a> + <a href="http://chaijs.com/">Chai</a> + <a href="http://www.coffeelint.org/">CoffeeLint</a></li>
+  <li><code class="highlighter-rouge">make min</code> will create the minified version</li>
+  <li><code class="highlighter-rouge">make</code> will run both the previous steps and compile everything</li>
+</ul>
+
+<h2 id="change-log">Change Log</h2>
+
+<p><strong>1.4.1</strong></p>
+
+<ul>
+  <li>Fixes an issue where some data used in templates would get incorrectly escaped.</li>
+</ul>
+
+<p><strong>1.4.0</strong></p>
+
+<ul>
+  <li><code class="highlighter-rouge">accessToken</code> is no longer required to fetch images from user accounts!</li>
+  <li>New template helpers for working with the new portrait and landscape images.</li>
+  <li><code class="highlighter-rouge">target</code> can now accept a DOM node directly, instead of just a string ID, thanks <a href="https://github.com/juhamust">@juhamust</a>!</li>
+  <li>Squashed the last (hopefully!) of the IE8 bugs.</li>
+  <li>Fixed image loading errors when using Instafeed.js on a local file protocol (<code class="highlighter-rouge">file://</code>). Thanks <a href="https://github.com/spoonben">@spoonben</a>!</li>
+  <li>Added support from AMD and CommonJS.</li>
+  <li>Improved error messaging when Instafeed.js can’t find it’s target element on the page.</li>
+  <li>Instafeed.js no longer complains when trying to use strings for the <code class="highlighter-rouge">userId</code>, <code class="highlighter-rouge">locationId</code>, and <code class="highlighter-rouge">limit</code> options.</li>
+</ul>
+
+<p><strong>1.3.2</strong></p>
+
+<ul>
+  <li>Fixed the <code class="highlighter-rouge">useHttp</code> option when no template is set. Thanks @bartekn!</li>
+</ul>
+
+<p><strong>1.3.1</strong></p>
+
+<ul>
+  <li>Fixed an issue where <code class="highlighter-rouge">sortBy: "most-recent"</code> did not always correctly sort the images. Thanks
+<a href="https://github.com/neilcampbell">Neil Campbell</a>!</li>
+  <li>Changed the default <code class="highlighter-rouge">sortBy</code> option to be <code class="highlighter-rouge">none</code>.</li>
+</ul>
+
+<p><strong>1.3.0</strong></p>
+
+<ul>
+  <li>Image URLs are now protocol-relative by default. Use the new <code class="highlighter-rouge">useHttp</code> option to disable.</li>
+  <li>Added the ability to filter out images using the <code class="highlighter-rouge">filter</code> option.</li>
+  <li>Added pagination support using <code class="highlighter-rouge">.next()</code> and <code class="highlighter-rouge">.hasNext()</code> methods.</li>
+  <li>Removed the default <code class="highlighter-rouge">limit</code> of 15 images. The option is still supported, but by default no limit
+is sent to the API.</li>
+</ul>
+
+<p><strong>1.2.1</strong></p>
+
+<ul>
+  <li>Fixed IE8 error “Object doesn’t support this action”.</li>
+</ul>
+
+<p><strong>1.2.0</strong></p>
+
+<ul>
+  <li>Added the ability to sort images! Use the <strong>sortBy</strong> option.</li>
+  <li>Added <strong>__, __</strong>, <strong>__, __</strong>, <strong>__, and __</strong>, tags to the <strong>template</strong> option.</li>
+</ul>
+
+<p><strong>1.1.0</strong></p>
+
+<ul>
+  <li>Added option to use a custom html template with the <strong>template</strong> option.</li>
+  <li>Added ability to fetch several feeds at the same time (create separate instances).</li>
+  <li>Added <strong>before</strong>, <strong>success</strong>, <strong>after</strong>, and <strong>error</strong> callback options.</li>
+  <li>Added <strong>mock</strong> option to only fetch data. Use with <strong>success</strong> option for custom DOM manipulation.</li>
+</ul>
+
+<p><strong>1.0.0</strong></p>
+
+<ul>
+  <li>Initial release</li>
+</ul>
+</div>
+	</article>
+</div><!-- Footer -->
+<div id="footer">
+  
+  <!-- Copyright -->
+  <ul class="copyright"><li>&copy;James Harrison and Emma Chambers. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+    <li>Jekyll integration: <a href="https://chrisbobbe.github.io/">Chris Bobbe</a></li>
+  </ul>
+  
+</div></body>
+</html>
