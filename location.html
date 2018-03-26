@@ -120,7 +120,9 @@ var jekyllMaps = (function() {
         position: position,
         title: location.title,
         image: location.image,
-        url: location.url.length > 0 ? mapOptions.baseUrl + location.url : '',
+        icon: location.icon || mapOptions.markerIcon,
+        url: markerUrl(mapOptions.baseUrl, location.url),
+        url_text: location.url_text,
         map: map
       })
       if (mapOptions.showMarkerPopup) marker.addListener('click', markerPopup)
@@ -128,17 +130,25 @@ var jekyllMaps = (function() {
       return marker
     }
 
+    function markerUrl(baseUrl, url) {
+      if (/^(https?|\/\/)/.test(url)) return url
+
+      return url.length > 0 ? baseUrl + url : ''
+    }
+
     function markerPopup() {
-      var contentHtml =
-        '<div class="map-info-window"><h5>' + this.title + '</h5>'
-      var imageHtml = '<img src="' + this.image + '" alt="' + this.title + '"/>'
+      var content = '<div class="map-info-window"><h5>' + this.title + '</h5>'
+      var imageTag =
+        this.image.length > 0 &&
+        '<img src="' + this.image + '" alt="' + this.title + '"/>'
       if (this.url.length > 0) {
-        var linkText = this.image.length > 0 ? imageHtml : 'View'
-        contentHtml += '<a href="' + this.url + '">' + linkText + '</a></div>'
-      } else if (this.image.length > 0) {
-        contentHtml += imageHtml
+        var linkContent = imageTag || this.url_text || 'View'
+        content += '<a href="' + this.url + '">' + linkContent + '</a>'
+      } else if (imageTag) {
+        content += imageTag
       }
-      infoWindow.setContent(contentHtml)
+      content += '</div>'
+      infoWindow.setContent(content)
       infoWindow.open(map, this)
     }
   }
@@ -209,6 +219,8 @@ if (typeof Object.assign !== 'function') {
             <span class="icon fa-map-marker">Location</span>
           </a></li><li><a href="https://james-and-emma.github.io/accommodation.html" id="accommodation-link">
             <span class="icon fa-hotel">Accommodation</span>
+          </a></li><li><a href="https://james-and-emma.github.io/taxis.html" id="taxis-link">
+            <span class="icon fa-taxi">Taxis</span>
           </a></li><li><a href="https://james-and-emma.github.io/rsvp.html" id="rsvp-link">
             <span class="icon fa-send">RSVP</span>
           </a></li><li><a href="https://james-and-emma.github.io/gifts.html" id="gifts-link">
@@ -249,18 +261,20 @@ if (typeof Object.assign !== 'function') {
 
 <h2 id="how-to-get-here">How to get here</h2>
 
-<div id="36f23426-d5b6-475f-8dec-3f11bf8c5373" style="width:100%;height:400px;"></div>
+<div id="cb11c11d-7711-4efa-b699-2dd7c51c06c3" style="width:100%;height:400px;"></div>
 <script type="text/javascript">
   jekyllMaps.register(
-    '36f23426-d5b6-475f-8dec-3f11bf8c5373',
-    [{"latitude":51.529564,"longitude":-2.474435,"title":"Zion United Church","url":"/location.html","image":"img/church.svg"},{"latitude":51.5260867,"longitude":-2.5189702,"title":"Winterbourne Medieval Barn","url":"/location.html","image":""},{"latitude":51.5309542,"longitude":-2.4753621,"title":"Car Park - Royal British Legion","url":"/location.html","image":""}],
-    {"baseUrl":"","useCluster":true,"showMarker":true,"showMarkerPopup":true}
+    'cb11c11d-7711-4efa-b699-2dd7c51c06c3',
+    [{"latitude":51.529564,"longitude":-2.474435,"title":"Zion United Church","icon":null,"url":"","url_text":null,"image":"img/church.svg"},{"latitude":51.5260867,"longitude":-2.5189702,"title":"Winterbourne Medieval Barn","icon":null,"url":"","url_text":null,"image":""},{"latitude":51.5309542,"longitude":-2.4753621,"title":"Car Park - Royal British Legion","icon":null,"url":"","url_text":null,"image":""}],
+    {"baseUrl":"","useCluster":true,"showMarker":true,"showMarkerPopup":true,"markerIcon":null}
   );
 </script>
 
 <h3 id="driving">Driving</h3>
 
 <p>There is limited parking available at Zion Church, so please use the car park at the nearby Royal British Legion (see the map above).</p>
+
+<p>If you need a taxi, there are contact details for some local taxi companies on our <a href="https://james-and-emma.github.io/taxis.html">taxis page</a>.</p>
 
 <h3 id="train">Train</h3>
 
